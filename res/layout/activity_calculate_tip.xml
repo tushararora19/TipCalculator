@@ -1,0 +1,140 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightBlue"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".CalculateTip" >
+
+    <TextView
+        android:id="@+id/tv_tipAmtIs"
+        style="@style/Text_Content"
+        android:layout_alignLeft="@+id/et_tipAmt"
+        android:layout_below="@+id/tv_enterTipPerc"
+        android:layout_marginTop="25dp"
+        android:text="@string/tipAmtis"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_tipValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_tipAmtIs"
+        android:layout_alignTop="@+id/tv_tipAmtIs"
+        android:layout_toRightOf="@+id/tv_tipAmtIs"
+        android:maxLength="7"
+        android:textColor="@color/Blue"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/b_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_alignLeft="@+id/tv_tipAmtIs"
+        android:layout_below="@+id/tv_tipAmtIs"
+        android:layout_marginTop="25dp"
+        android:text="@string/clear" 
+        android:textStyle="bold"
+        android:background="@drawable/text_border"/>
+
+    <TextView
+        android:id="@+id/tv_enterTipPerc"
+        style="@style/Text_Content"
+        android:layout_alignLeft="@+id/tv_tipAmtIs"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="25dp"
+        android:text="@string/EnterTipPerc" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_chooseTip"
+        android:layout_marginTop="15dp" >
+
+        <Button
+            android:id="@+id/b_tip10"
+            style="@style/Custom_Button"
+            android:text="@string/Tip10" />
+
+        <Button
+            android:id="@+id/b_tip15"
+            style="@style/Custom_Button"
+            android:text="@string/Tip15" />
+
+        <Button
+            android:id="@+id/b_tip20"
+            style="@style/Custom_Button"
+            android:text="@string/Tip20" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_otherTip"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_enterTipPerc"
+        android:layout_toRightOf="@+id/tv_enterTipPerc"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:maxLength="7"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tv_EnterTip"
+        style="@style/Text_Content"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/EnterTip" />
+
+    <TextView
+        android:id="@+id/tv_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/et_tipAmt"
+        android:layout_alignBottom="@+id/et_tipAmt"
+        android:layout_alignParentLeft="true"
+        android:text="@string/currency"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/et_tipAmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_EnterTip"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/tv_currency"
+        android:ems="10"
+        android:hint="@string/defaultAmt"
+        android:inputType="numberDecimal"
+        android:maxLength="7"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tv_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/et_otherTip"
+        android:layout_alignBottom="@+id/et_otherTip"
+        android:layout_toRightOf="@+id/et_otherTip"
+        android:text="@string/percentage"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tv_chooseTip"
+        style="@style/Text_Content"
+        android:layout_alignLeft="@+id/tv_EnterTip"
+        android:layout_below="@+id/et_tipAmt"
+        android:layout_marginTop="25dp"
+        android:text="@string/chooseTip" />
+
+</RelativeLayout>
