@@ -10,9 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-// TO DO : FINISH TOAST 
-// User changes the total amount and updated tip is reflected automatically (can it be done for buttons as well)???
 public class CalculateTip extends Activity {
 
 	EditText amount, tipOther;
@@ -29,7 +28,7 @@ public class CalculateTip extends Activity {
 			pre_amount = Double.parseDouble(amount.getText().toString());
 
 			if (pre_amount == 0){
-				// Toast.makeText(this, "Please enter Pre-Tip Amount", Toast.LENGTH_LONG).show();
+				 Toast.makeText(this, "Please enter Pre-Tip Amount", Toast.LENGTH_LONG).show();
 			}
 			else {
 				tip_value = (pre_amount / 100)*(Double.parseDouble(tip));
@@ -131,7 +130,7 @@ public class CalculateTip extends Activity {
 				if (!s.toString().equals("")){
 					if (Double.parseDouble(s.toString()) > 100.00 || Double.parseDouble(s.toString()) < 0.00){
 						// show it is not valid value
-						// Toast.makeText(this, "Please enter Pre-Tip Amount", Toast.LENGTH_LONG).show();
+						 // Toast.makeText(this, "Please enter Pre-Tip Amount", Toast.LENGTH_LONG).show();
 						s.replace(0, s.toString().length(), "");
 					} else {
 						// s is basically value in edit text
