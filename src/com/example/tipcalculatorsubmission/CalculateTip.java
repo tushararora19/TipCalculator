@@ -1,12 +1,14 @@
 package com.example.tipcalculatorsubmission;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,7 +26,7 @@ public class CalculateTip extends Activity {
 
 	private void calculateTip(String tip) {
 		if ((!tipOther.getText().toString().equals("")) && (!amount.getText().toString().equals(""))){
-
+			
 			pre_amount = Double.parseDouble(amount.getText().toString());
 
 			if (pre_amount == 0){
@@ -57,6 +59,7 @@ public class CalculateTip extends Activity {
 		tipOther = (EditText) findViewById(R.id.et_otherTip);
 		
 		amount.requestFocus();
+		showSoftKeyboard(amount);
 		
 		setupTipClickListener();
 		setupOtherTipEnterListener();
@@ -77,8 +80,7 @@ public class CalculateTip extends Activity {
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				// TODO Auto-generated method stub
-
+				showSoftKeyboard(amount);
 			}
 
 			@Override
@@ -103,6 +105,7 @@ public class CalculateTip extends Activity {
 				tipValue.setText("");
 				tipOther.setText("");
 				amount.requestFocus();
+				showSoftKeyboard(amount);
 			}
 		};
 
@@ -116,7 +119,7 @@ public class CalculateTip extends Activity {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				Log.d(TAG, "ON TXT CHG CharSeq s: " +s + " and : " + s.toString() + " start: " + start + "before: "+before + " count: "+count);
-
+				showSoftKeyboard(tipOther);
 			}
 
 			@Override
@@ -127,6 +130,7 @@ public class CalculateTip extends Activity {
 
 			@Override
 			public void afterTextChanged(Editable s) {
+				showSoftKeyboard(tipOther);
 				if (!s.toString().equals("")){
 					if (Double.parseDouble(s.toString()) > 100.00 || Double.parseDouble(s.toString()) < 0.00){
 						// show it is not valid value
@@ -149,7 +153,10 @@ public class CalculateTip extends Activity {
 			@Override
 			public void onClick(View v) {
 				Log.d(TAG, "Pre-tip amount is : "+amount.getText());
-
+				
+				hideSoftKeyboard(tipValue);
+				hideSoftKeyboard(amount);
+				
 				if (!amount.getText().toString().equals("")){
 					pre_amount = Double.parseDouble(amount.getText().toString());
 
@@ -177,5 +184,17 @@ public class CalculateTip extends Activity {
 		tip10.setOnClickListener(tipHandler);
 		tip15.setOnClickListener(tipHandler);
 		tip20.setOnClickListener(tipHandler);
+	}
+	
+	private void showSoftKeyboard(View v) { 
+		if (v.requestFocus()){
+			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT);
+		}
+	}
+	
+	private void hideSoftKeyboard(View v) {
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 	}
 }

@@ -83,9 +83,10 @@
         android:layout_alignBottom="@+id/tv_enterTipPerc"
         android:layout_toRightOf="@+id/tv_enterTipPerc"
         android:ems="10"
-        android:inputType="numberDecimal"
         android:maxLength="7"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:inputType="numberDecimal" 
+        android:imeOptions="actionDone"/>
 
     <TextView
         android:id="@+id/tv_EnterTip"
@@ -117,7 +118,8 @@
         android:hint="@string/defaultAmt"
         android:inputType="numberDecimal"
         android:maxLength="7"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:imeOptions="actionGo" />
 
     <TextView
         android:id="@+id/tv_percentage"
